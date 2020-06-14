@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/inzilo-styles/variables";
+
+:root {
+  --info: #25c196;
+  --header-height: 90px;
+}
+
+html, body {
+  height: 100%;
+  // @include gradient-gray('background');
+}
+.card {
+  border-radius: 1.4rem;
+}
+.btn {
+  &.btn-gray {
+    @include gradient-gray-linear('background');
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    border-radius: 0.8rem;
+  }
+  &.btn-login {
+    height: 2rem;
+    padding: unset;
+  }
+  &.btn-info {
+    background: var(--info);
+  }
+  &.btn-primary-gradient {
+    @include gradient-primary('background');
+  }
+  &.btn-primary-shadow {
+    -webkit-box-shadow: inset -1px -3px 0 $primary-shade;
+    -moz-box-shadow: inset -1px -3px 0 $primary-shade;
+    box-shadow: inset -1px -3px 0 $primary-shade;
+  }
+  &.btn-bg-gray {
+    @include gradient-gray-linear('background');
+  }
+  &.btn-pricing {
+    @include gradient-gray-linear-reverse('background');
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid $gray;
+
+    span {
+      &.title {
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+      &.pricing {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.navigation-button-group {
+  .btn {
+    @include gradient-primary('background');
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: inset -1px -3px 0 $primary-shade;
+    -moz-box-shadow: inset -1px -3px 0 $primary-shade;
+    box-shadow: inset -1px -3px 0 $primary-shade;
+    font-size: 0.87rem;
+  }
+}
+
+.page-header {
+  background: $primary;
+  display: flex;
+  overflow: hidden;
+  img {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    width: 140px;
+  }
+}
+
+hr {
+  &.hr-primary {
+    background: $primary;
+    height: 0.2rem;
+  }
+}
+.col-hr-right {
+  border-right: 2px solid $gray;
+}
+.display-block {
+  display: block !important;
+}
+
+.page-content {
+  .table {
+    &.service-price {
+      th {
+        padding: unset;
+        border: unset;
+        &.head {
+          .title {
+            background: $primary;
+            border-radius: 0.25rem;
+            color: #fff;
+            width: 95%;
+            margin: 0 auto;
+          }
+        }
+      }
+      td {
+        border-top: unset;
+        border-bottom: 1px solid $primary;
+        padding: 0.35rem 0.5rem;
+        color: $primary;
+        font-weight: 600;
+      }
+      tr:nth-last-child(2) td, tr:nth-last-child(1) td {
+        border: unset;
+      }
+      tr.total td {
+        background: $gray-tint;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+  .action-buttons {
+    margin: 0 auto;
+    button {
+      font-weight: 600;
+    }
+  }
+}
+
+p-multiSelect {
+  width: 70%;
+}
+
+.ui-multiselect{
+  &.ui-state-default{
+    width: 100%;
+  }
+}
+
+.custom-card {
+  margin: 10px;
+  background: $primary;
+  color: $primary;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-radius: .45rem;
+
+  .card-header {
+      background: $gray-tint;
+      padding: .45rem 1.25rem;
+      border-top-left-radius: .35rem;
+      border-top-right-radius: .35rem;
+  }
+
+  .card-body {
+      display: inline-flex;
+      flex-flow: column;
+      align-items: center;
+      padding: .75rem;
+      justify-content: center;
+
+      img {
+          object-fit: cover;
+      }
+  }
+}
+
+/* Utilities */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Overriding calendar style in book appointment page */
+.book-appointment {
+  .ngb-dp-day {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+/* Overriding time picker style in add-service page */
+.add-service-form {
+  .ngb-tp-meridian {
+    .btn {
+      background: var(--info);
+      color: white;
+    }
+  }
+  .chevron {
+    color: white;
+  }
+}
+
+/* custom style */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+a.cal-event-action{
+  font-size: 18px !important;
+  padding-right: 5px !important;
+  font-weight: 600;
+  vertical-align: middle;
+}

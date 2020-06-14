@@ -1,0 +1,32 @@
+.page-header {
+  height: var(--header-height);
+}
+
+.main-container {
+  display: flex;
+  background: url("/assets/img/brand/logo_gray.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 400px;
+  height: calc(100% - var(--header-height));
+}
+
+.header .number-container > button {
+  width: 30px;
+  height: 30px;
+  background: #f5f5f5;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  color: #30a7fe;
+}
+
+
+/* For Mobile Screens */
+@media only screen and (max-width: 768px) {
+  .main-container {
+      display: block;
+  }
+}

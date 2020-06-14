@@ -1,0 +1,39 @@
+@import 'colors';
+
+.admin-layout{
+    input:focus {
+        box-shadow: none;
+    }
+    .discount-box{
+        border-radius: 15px;
+        background: $primary;
+    }
+    .head-h5{
+        padding: 0px 20px;
+        background: #61AAFA;
+        background-image: linear-gradient(180deg, #61AAFA, $primary);
+        border-radius: 10px 10px 0px 0px;
+    }
+    .head{
+        padding: 3px 50px;
+        background: #DADADC;
+        border-radius: 10px;
+        font-size: 24px;
+    }
+    .custom-btn{
+        background: #DADADC;
+    }
+    .mt-6{
+        margin-top: 4rem !important;
+    }
+    .mt-7{
+        margin-top: 5rem !important;
+    }
+    .cursor{
+        cursor:pointer;
+    }
+    .btn-primary{
+        background: $primary;
+    }
+    
+}

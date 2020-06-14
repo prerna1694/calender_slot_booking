@@ -1,0 +1,145 @@
+<h3 class="text-center mt-0 mb-3">Show Appointments</h3>
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="btn-group">
+        <div
+            class="btn btn-primary"
+            mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()"
+        >
+            Previous
+        </div>
+        <div
+            class="btn btn-outline-secondary"
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+        >
+            Today
+        </div>
+        <div
+            class="btn btn-primary"
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()"
+        >
+            Next
+        </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h4>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group">
+        <div
+            class="btn btn-primary"
+            (click)="setView(CalendarView.Month)"
+            [class.active]="view === CalendarView.Month"
+        >
+            Month
+        </div>
+        <div
+            class="btn btn-primary"
+            (click)="setView(CalendarView.Week)"
+            [class.active]="view === CalendarView.Week"
+        >
+            Week
+        </div>
+        <div
+            class="btn btn-primary"
+            (click)="setView(CalendarView.Day)"
+            [class.active]="view === CalendarView.Day"
+        >
+            Day
+        </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="ml-3 mb-4" [ngSwitch]="view">
+    <mwl-calendar-month-view
+        *ngSwitchCase="CalendarView.Month"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [activeDayIsOpen]="activeDayIsOpen"
+        (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+        *ngSwitchCase="CalendarView.Week"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+        *ngSwitchCase="CalendarView.Day"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+</div>
+  
+<ng-template #modalContent let-close="close">
+    <div class="modal-body" style="padding:0px;">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-white discount-box">
+                <h5 class="text-center head-h5 font-weight-bold mt-3 mb-5 pt-4 pb-5">
+                    <span class="head text-body">Appointment</span>
+                    <button type="button" class="close text-white" (click)="close()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+                <form [formGroup]="modalForm" name="form" class="add-category-form" (ngSubmit)="onSubmit()">
+                    <div class="row form-group">
+                        <label class="col-sm-5 text-left category-font-style">Client Name</label>
+                        <div class="input-group col-sm-7">
+                            <input type="text" class="form-control cat-title-style" formControlName="clientName" required />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-5 text-left category-font-style">Client Phone</label>
+                        <div class="input-group col-sm-7">
+                            <input type="number" class="form-control cat-title-style" formControlName="clientPhone" required />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-5 text-left category-font-style">Appointment Date</label>
+                        <div class="input-group col-sm-7">
+                            <input class="form-control cat-title-style" #dpFull="bsDatepicker" bsDatepicker
+                                formControlName="appointmentDate" [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY, h:mm:ss a' }">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-5 text-left category-font-style">Appointment Time</label>
+                        <div class="input-group col-sm-7">
+                            <input type="text" class="form-control cat-title-style" formControlName="appointmentTime" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-5 text-left category-font-style">Technician's Name</label>
+                        <div class="input-group col-sm-7">
+                            <input type="text" class="form-control cat-title-style" formControlName="technicianName" required/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <button type="submit" class="btn category-title cat-title-style" [disabled]="modalForm.invalid">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>          
+    </div>
+</ng-template>

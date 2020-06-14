@@ -1,0 +1,14 @@
+@import "colors";
+@import "variables";
+
+.form-group {
+  label {
+    // font-weight: 700;
+    margin: 0;
+  }
+  .form-control {
+    // @include gradient-gray-linear('background');
+    // border: 3px solid $gray;
+    height: calc(1.3em + .75rem + 2px);
+  }
+}

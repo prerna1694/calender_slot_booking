@@ -1,0 +1,54 @@
+
+  <div class="d-flex justify-content-center h-75">
+    <div class="card custom_card auth-card">
+      <div class="card-body">
+      <div class="d-flex justify-content-center">
+        <div class="brand_logo_container">
+          <img src="./assets/img/avatar/user1.png" class="brand_logo" alt="Logo">
+        </div>
+      </div>
+
+      <div class="justify-content-center form_container">
+
+        <div class="row" *ngIf="formError">
+          <div class="col">
+            <div class="text-danger">{{ formError }}</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+              <div class="form-group mb-3">
+                <label for="input-username">Username or Email*</label>
+                <input type="text" formControlName="userName" class="form-control" id="input-username" placeholder="Email or Username" required>
+                <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+              </div>
+              <div class="form-group mb-2">
+                <label for="input-password">Password*</label>
+                <input type="password" formControlName="password" class="form-control" id="input-password" placeholder="Password" required>
+                <!--            <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+              </div>
+              
+
+              <div class="d-flex justify-content-center mt-5 login_container">
+                <button class="btn btn-gray btn-block btn-login">
+                  <strong>Login</strong>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <div class="mt-4">
+        <div class="d-flex justify-content-start links">
+          <a href="#" class="text-white">Forgot Password</a>
+        </div>
+        <div class="d-flex justify-content-end links">
+          <a routerLink="/auth/register" class="text-white">Register</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

@@ -1,0 +1,16 @@
+<main class="w-100">
+  <h3 class="font-weight-bold text-capitalize text-center py-3">Choose a Technician</h3>
+  <div class="card-container">
+    <a [routerLink]="'technician/' + i" class="card custom-card"
+      *ngFor="let technician of technicians; let i = index;">
+<!--      <div class="card-header w-100">-->
+<!--        <div class="specs float-left">T: 0 S: $0.00</div>-->
+<!--        <div class="float-right">Out</div>-->
+<!--      </div>-->
+      <div class="card-body">
+        <img src="{{technician.photo}}" alt="image" class="rounded-circle" width="100" height="100">
+        <div class="service-name text-white text-capitalize">{{technician.firstName + ' ' + technician.lastName}}</div>
+      </div>
+    </a>
+  </div>
+</main>

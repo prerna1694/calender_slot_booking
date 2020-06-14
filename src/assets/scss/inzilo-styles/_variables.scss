@@ -1,0 +1,33 @@
+@import "colors";
+
+@mixin gradient-primary($attribute) {
+  #{$attribute}: -webkit-linear-gradient($primary-tint, $primary) !important;
+  #{$attribute}: -moz-linear-gradient($primary-tint, $primary) !important;
+  #{$attribute}: -ms-linear-gradient($primary-tint, $primary) !important;
+  #{$attribute}: -o-linear-gradient($primary-tint, $primary) !important;
+  #{$attribute}: linear-gradient($primary-tint, $primary) !important;
+}
+
+@mixin gradient-gray($attribute) {
+  #{$attribute}: -webkit-radial-gradient(circle, $white 0%, $gray 100%) !important;
+  #{$attribute}: -moz-radial-gradient(circle, $white 0%, $gray 100%) !important;
+  #{$attribute}: -ms-radial-gradient(circle, $white 0%, $gray 100%) !important;
+  #{$attribute}: -o-radial-gradient(circle, $white 0%, $gray 100%) !important;
+  #{$attribute}: radial-gradient(circle, $white 0%, $gray 100%) !important;
+}
+
+@mixin gradient-gray-linear($attribute) {
+  #{$attribute}: -webkit-linear-gradient($gray, $white) !important;
+  #{$attribute}: -moz-linear-gradient($gray, $white) !important;
+  #{$attribute}: -ms-linear-gradient($gray, $white) !important;
+  #{$attribute}: -o-linear-gradient($gray, $white) !important;
+  #{$attribute}: linear-gradient($gray, $white) !important;
+}
+
+@mixin gradient-gray-linear-reverse($attribute) {
+  #{$attribute}: -webkit-linear-gradient($white, $gray) !important;
+  #{$attribute}: -moz-linear-gradient($white, $gray) !important;
+  #{$attribute}: -ms-linear-gradient($white, $gray) !important;
+  #{$attribute}: -o-linear-gradient($white, $gray) !important;
+  #{$attribute}: linear-gradient($white, $gray) !important;
+}

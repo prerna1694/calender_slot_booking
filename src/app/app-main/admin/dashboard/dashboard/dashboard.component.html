@@ -1,0 +1,175 @@
+<div class="container-fluid row">
+  <div class="col-md-7 col-hr-right">
+
+    <div class="navigation-button-group">
+      <div class="row justify-content-center">
+        <div class="col-6 col-sm-4 col-md-3 p-1" *ngFor="let category of categoriesServices">
+          <button class="btn btn-primary btn-block p-1 text-capitalize"
+            [ngClass]="{'highlight': category.categoriesId === categorySelected}"
+            (click)="selectService(category.categoriesId)">{{category.categoryName}}</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="hr-primary mt-2">
+
+    <div class="page-content">
+      <div class="row">
+        <div class="col-6 col-sm-4 col-md-3 p-1" *ngFor="let service of categorySelectedServices">
+          <button type="button" class="btn btn-pricing btn-block p-1 text-capitalize" (click)="addService(service)">
+            <span class="title display-block">{{service.name}}</span>
+            <span class="pricing text-primary">${{service.price}}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-5">
+
+    <div class="navigation-button-group">
+      <div class="row">
+        <div class="col p-1">
+          <a href="#" class="btn btn-primary btn-block p-1">Customer Name</a>
+        </div>
+        <div class="col p-1">
+          <a href="#" class="btn btn-primary btn-block p-1">Rewards Credit</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-1">
+          <a href="#" class="btn btn-primary btn-block p-1">Tech Picture</a>
+        </div>
+        <div class="col p-1">
+          <a href="#" class="btn btn-primary btn-block p-1">Tech Name</a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="hr-primary mt-2">
+
+    <div class="page-content">
+      <div class="row">
+        <div class="col">
+          <div class="table-responsive">
+            <table class="table service-price">
+              <thead>
+                <tr>
+                  <th class="head text-center">
+                    <div class="title">#</div>
+                  </th>
+                  <th scope="col" class="head text-center">
+                    <div class="title">
+                      Tech Name
+                    </div>
+                  </th>
+                  <th scope="col" class="head text-center">
+                    <div class="title">Services</div>
+                  </th>
+                  <th scope="col" class="head text-center">
+                    <div class="title">Price</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let service of servicesChosenList; let i = index">
+
+                  <td class="text-center">
+                    <i *ngIf="i != 0" class="fa fa-trash text-danger cursor-pointer" (click)="deleteService(i)"></i>
+                    <i *ngIf="i === 0" class="fa fa-circle"></i>
+                  </td>
+
+                  <td>
+                    <select class="text-capitalize form-control" (change)="changeTechnician($event, i)">
+                      <option [selected]="technician.id == service.technician.id" [value]="technician.id" *ngFor="let technician of technicianList">
+                        {{technician.firstName}}
+                      </option>
+                    </select>
+                  </td>
+
+                  <td class="text-capitalize">
+                    <select class="text-capitalize form-control" (change)="updateServicePrice($event, i)">
+                      <option [selected]="subservice.id == service.service.id" [value]="subservice.id" *ngFor="let subservice of allServices">
+                        {{subservice.name}}</option>
+                    </select>
+                  </td>
+
+                  <td>${{service.service.price}}</td>
+                </tr>
+                <tr class="total">
+                  <td class="py-2" colspan="3">Total</td>
+                  <td class="py-2">${{total}}</td>
+                </tr>
+                <tr class="total" *ngIf="discountedTotal">
+                  <td class="py-2" colspan="3">
+                    Offer Applied ({{discountData.valueString}})
+                  </td>
+                  <td class="py-2 text-success">-${{discountData.discountAmount}}</td>
+                </tr>
+                <tr class="total" *ngIf="discountedTotal">
+                  <td class="py-2" colspan="3">Total after offer</td>
+                  <td class="py-2">${{discountedTotal}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="action-buttons w-75 mt-4">
+            <div class="row justify-content-center">
+
+              <div class="col-md-4 mb-2">
+                <button type="button" class="btn btn-primary btn-block p-1"
+                  (click)="open(offerOptions.DISCOUNT_DOLLAR)">
+                  Discount<br>$$
+                </button>
+              </div>
+
+              <div class="col-md-4 mb-2">
+                <button type="button" class="btn btn-primary btn-block p-1"
+                  (click)="open(offerOptions.DISCOUNT_PERCENTILE)">
+                  Discount<br>%%
+                </button>
+              </div>
+
+              <div class="col-md-4 mb-2">
+                <button type="button" class="btn btn-primary btn-block p-1" (click)="open(offerOptions.PROMO)">
+                  Promo
+                </button>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 mb-2">
+                <button type="button" class="btn btn-primary btn-block p-1">
+                  Void
+                </button>
+              </div>
+
+              <div class="col-md-4 mb-2">
+                <button (click)="actionPay()"
+                  class="btn btn-primary btn-block p-1 d-flex justify-content-center align-items-center">
+                  Pay
+                </button>
+              </div>
+
+              <div class="col-md-4 mb-2">
+                <button type="button" class="btn btn-primary btn-block p-1">
+                  Print Order
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
